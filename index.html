@@ -1,106 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Learn with Abhi</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f8ff;
-      color: #333;
-    }
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    h1, h2 {
-      text-align: center;
-      color: #2b5db9;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    .section {
-      margin-bottom: 25px;
-    }
-    .link {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .link a {
-      font-size: 18px;
-      color: #ffffff;
-      background-color: #2b5db9;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-    .link a:hover {
-      background-color: #1d3e7a;
-    }
-    .contact {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 18px;
-    }
-    .highlight {
-      color: #2b5db9;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn with Abhi - From Basics to Skills</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables for Theming --- */
+        :root {
+            --primary-color: #007BFF; /* Blue for trust and focus */
+            --secondary-color: #28a745; /* Green for growth and harmony */
+            --accent-color: #ffc107; /* Yellow for attention */
+            --text-color: #333;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- General Styles & Resets --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; /* For smooth scrolling on navigation */
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header & Logo --- */
+        header {
+            background: var(--card-background);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo-l, .logo-a {
+            background-color: var(--primary-color);
+            color: white;
+            width: 35px;
+            height: 35px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-a {
+            background-color: var(--secondary-color);
+        }
+
+        .logo:hover .logo-l, .logo:hover .logo-a {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .logo-text {
+            margin-left: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease-in-out;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0, 123, 255, 0.1), rgba(40, 167, 69, 0.1));
+            text-align: center;
+            padding: 100px 0;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            animation: fadeInUp 1s ease-out 0.5s backwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .cta-button {
+            background: var(--accent-color);
+            color: var(--text-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            animation: fadeInUp 1s ease-out 1.1s backwards;
+        }
+
+        .cta-button:hover {
+            background-color: #e0a800;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* --- Sections --- */
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-top: -30px;
+            margin-bottom: 40px;
+        }
+
+        /* --- Why Choose Us Section --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-background);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: card-animation 0.5s forwards paused;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+            font-size: 1.25rem;
+        }
+
+        /* --- Classes Offered Section --- */
+        #classes {
+             background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM81 9c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z" fill="%23007BFF" fill-opacity="0.1"/%3E%3C/svg%3E');
+        }
+        .class-card {
+            background: var(--card-background);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: card-animation 0.5s forwards paused;
+        }
+
+        .class-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* --- Skills Covered Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: var(--card-background);
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: card-animation 0.5s forwards paused;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.2);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--text-color);
+            color: #f8f9fa;
+            padding: 60px 0 20px 0;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: #f8f9fa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Unified animation for cards appearing on scroll */
+        @keyframes card-animation {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Media Queries for Responsiveness --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                padding-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🏫 Learn with Abhi</h1>
-    <h2>📘 From Basics to Skills – All in One Place!</h2>
 
-    <div class="section">
-      <h3>📚 Classes Offered: Nursery to 8th – All Subjects & Practical Skills</h3>
-    </div>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="logo-l">L</span>
+                <span class="logo-a">A</span>
+                <span class="logo-text">Learn with Abhi</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#classes">Classes</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <div class="section">
-      <h3>📖 Subjects Covered:</h3>
-      <ul>
-        <li>✅ All School Subjects</li>
-        <li>✅ Basic Computer & MS Office</li>
-        <li>✅ Typing & <strong>Coding</strong> Basics (for Class 5th & above)</li>
-        <li>✅ Spoken English</li>
-      </ul>
-    </div>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>From Basics to Skills – All in One Place!</h1>
+                <p>Your journey to knowledge and excellence starts here.</p>
+                <a href="#contact" class="cta-button">Free Demo Class Available</a>
+            </div>
+        </section>
 
-    <div class="section">
-      <h3>🌟 Features:</h3>
-      <ul>
-        <li>🕒 Evening Batches</li>
-        <li>🎯 Demo Class Available</li>
-        <li>💡 Top Teaching, Lowest Pricing</li>
-        <li>🏠 English Medium</li>
-        <li>👩‍🏫 All Subjects Under One Roof</li>
-        <li>🧠 Spacious Learning Classes</li>
-        <li>📝 Regular Tests</li>
-        <li>🌿 Healthy & Safe Environment</li>
-      </ul>
-    </div>
+        <section id="about" class="why-choose-us">
+            <div class="container">
+                <h2>Why Choose Us?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🕒</div>
+                        <h3>Evening Batches</h3>
+                        <p>Ideal for school students to learn without pressure.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3>Expert Teaching</h3>
+                        <p>Benefit from expert teaching at the lowest fees.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>All Subjects Under One Roof</h3>
+                        <p>Comprehensive learning for all subjects.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Peaceful Learning Environment</h3>
+                        <p>A spacious and calm atmosphere for focused learning.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Progress Tracking</h3>
+                        <p>Weekly/Monthly tests and progress reports.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌿</div>
+                        <h3>Safe & Friendly Atmosphere</h3>
+                        <p>A secure, healthy, and friendly environment for all students.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="section">
-      <h3>📍 Location:</h3>
-      <p>Gali No. 7, Shanti Nagar, Ashta, Distt. Sehore (M.P.)</p>
-    </div>
+        <section id="classes">
+            <div class="container">
+                <h2>Classes Offered</h2>
+                <p class="section-subtitle">Nursery to 10th – All Subjects (English Medium)</p>
+                <div class="class-card">
+                    <h3>Concept-Based Teaching for Every Student</h3>
+                    <p>We focus on building a strong foundation with concept-based learning tailored for each student's needs, ensuring no one is left behind.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="contact">
-      <p>📞 <span class="highlight">For Enquiry: +91 6266017070</span></p>
-    </div>
+        <section id="skills" class="skills-covered">
+            <div class="container">
+                <h2>Subjects & Skills Covered</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">✅ All School Subjects (English, Hindi, Math, Science, SST, etc.)</div>
+                    <div class="skill-item">✅ Basic Computer & MS Office</div>
+                    <div class="skill-item">✅ Typing Skills</div>
+                    <div class="skill-item">✅ Programming Basics (for Class 5th & above)</div>
+                    <div class="skill-item">✅ Spoken English</div>
+                    <div class="skill-item">✅ General Knowledge & Life Skills</div>
+                </div>
+            </div>
+        </section>
 
-    <div class="link">
-      <a href="https://learnwithabhi.onrender.com/" target="_blank">🌐 Visit Our Website</a>
-    </div>
-  </div>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="contact-info">
+                <h3>Contact for Admission/Enquiry</h3>
+                <p><strong>📍 Location:</strong> Gali No. 7, Shanti Nagar, Ashta, Distt. Sehore (M.P.)</p>
+                <p><strong>📱 Phone:</strong> <a href="tel:+916266017070">+91 62660 17070</a></p>
+                <p><strong>🌐 Website:</strong> <a href="https://learnwithabhi.onrender.com" target="_blank">learnwithabhi.onrender.com</a></p>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Learn with Abhi. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // This script adds a "reveal on scroll" animation effect.
+        document.addEventListener("DOMContentLoaded", function() {
+            // Options for the Intersection Observer
+            const observerOptions = {
+                root: null, // observes intersections relative to the viewport
+                rootMargin: '0px',
+                threshold: 0.1 // trigger when 10% of the element is visible
+            };
+
+            // The callback function to execute when an element intersects
+            const observerCallback = (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add a staggered delay to each element for a nice effect
+                        entry.target.style.animationDelay = `${index * 0.1}s`;
+                        // Play the animation
+                        entry.target.style.animationPlayState = 'running';
+                        // Stop observing the element once it has been animated
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            // Create a new Intersection Observer
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            // Select all elements that should be animated on scroll
+            const elementsToAnimate = document.querySelectorAll('.feature-card, .class-card, .skill-item');
+
+            // Observe each element
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
 </body>
 </html>
